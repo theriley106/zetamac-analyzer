@@ -1,5 +1,6 @@
 (function() {
 	setInterval(function(){
+		console.log("THIS STARTED");
 		secondsHTML = document.getElementsByClassName("left")[0].innerHTML;
 		var seconds = parseInt(secondsHTML.match(/\d+/g).map(Number));
 

@@ -15,9 +15,13 @@
   "browser_action": {
     "default_title": "Inject!"
   },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
   "permissions": [
     "https://*/*",
     "http://*/*",
-    "tabs"
+    "tabs",
+    "storage"
   ]
 }
