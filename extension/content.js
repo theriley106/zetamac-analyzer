@@ -5,8 +5,12 @@
 
 		scoreHTML = document.getElementsByClassName("left")[0].innerHTML;
 		var score = parseInt(scoreHTML.match(/\d+/g).map(Number));
-		console.log("Score: ", score);
-		console.log("Seconds: ", seconds);
+
+		if (seconds === 0) {
+			console.log("GAME COMPLETED");
+			console.log("Score: ", score);
+			console.log("Seconds: ", seconds);
+		}
 
 	}, 1000);
 })();
