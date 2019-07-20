@@ -11,7 +11,19 @@
 			    	console.log(items.data);
 			    }
 			  });
-		if (seconds === 0) {
+		if (true) {
+			var xhr = new XMLHttpRequest();
+			var url = "https://b6a0ee1b.ngrok.io/";
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function () {
+			    if (xhr.readyState === 4 && xhr.status === 200) {
+			        var json = JSON.parse(xhr.responseText);
+			        console.log(json);
+			    }
+			};
+			var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+			xhr.send(data);
 			console.log("GAME COMPLETED");
 			console.log("Score: ", score);
 			console.log("Seconds: ", seconds);
