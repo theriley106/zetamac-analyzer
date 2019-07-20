@@ -13,5 +13,5 @@
 			console.log("Seconds: ", seconds);
 		}
 
-	}, 1000);
+	}, 300);
 })();
