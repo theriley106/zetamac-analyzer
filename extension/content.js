@@ -6,7 +6,11 @@
 
 		scoreHTML = document.getElementsByClassName("left")[0].innerHTML;
 		var score = parseInt(scoreHTML.match(/\d+/g).map(Number));
-
+		chrome.storage.sync.get("data", function(items) {
+			    if (!chrome.runtime.error) {
+			    	console.log(items.data);
+			    }
+			  });
 		if (seconds === 0) {
 			console.log("GAME COMPLETED");
 			console.log("Score: ", score);
