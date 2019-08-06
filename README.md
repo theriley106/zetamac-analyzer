@@ -31,3 +31,18 @@ The endpoint URL can be configured by clicking the extension icon in Chrome:
   <img src="static/endpoint.png" width="300px"/>
 </p>
 
+## Lambda Function
+
+In the `lambda/` folder there is a basic lambda function that contains logic to accept POST requests containing zetamac score information sent from the Chrome extension.
+
+The function saves the current score and timestamp to a DynamoDB table.
+
+In addition, the Lambda function accepts GET requests to return the score data in chronological order.  This can be extremely useful for time series visualizations:
+
+<p align="center">
+  <img src="static/example.png" width="700px"/>
+</p>
+
+
+
+
