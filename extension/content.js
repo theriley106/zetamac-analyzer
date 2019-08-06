@@ -1,6 +1,7 @@
 (function() {
+	window.save = 0;
 	setInterval(function(){
-		console.log("THIS STARTED");
+		// console.log("THIS STARTED");
 		secondsHTML = document.getElementsByClassName("left")[0].innerHTML;
 		var seconds = parseInt(secondsHTML.match(/\d+/g).map(Number));
 
@@ -8,25 +9,29 @@
 		var score = parseInt(scoreHTML.match(/\d+/g).map(Number));
 		chrome.storage.sync.get("data", function(items) {
 			    if (!chrome.runtime.error) {
-			    	console.log(items.data);
+			    	window.urlVal = items.data;
+			    	// console.log(items.data);
 			    }
 			  });
-		if (true) {
+		var save = (seconds === 0) && (window.save === 0);
+		if (save) {
 			var xhr = new XMLHttpRequest();
-			var url = "https://b6a0ee1b.ngrok.io/";
+			var url = window.urlVal;
 			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
 			    if (xhr.readyState === 4 && xhr.status === 200) {
-			        var json = JSON.parse(xhr.responseText);
-			        console.log(json);
+			        //var json = JSON.parse(xhr.responseText);
+			        console.log(xhr.responseText);
 			    }
 			};
-			var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+			var data = JSON.stringify({"score": 999});
 			xhr.send(data);
 			console.log("GAME COMPLETED");
 			console.log("Score: ", score);
 			console.log("Seconds: ", seconds);
+			console.log("SAVED RESULTS");
+			window.save = 1;
 		}
 
 	}, 300);
