@@ -1,7 +1,3 @@
-# zetamac-analyzer
-Chrome extension to analyze zetamac scores
-
-
 ## What is Zetamac?
 
 Zetamac is an arithmetic game where you are given two minutes to solve as many arithmetic problems as you can.
@@ -25,11 +21,23 @@ This extension allows you to automatically POST your score data to any URL in th
 {"score": int(scoreVal)}
 ```
 
+## Installation
+
+Visit `chrome://extensions/` and click "Load Unpacked":
+
+<p align="center">
+  <img src="static/load.png" width="300px"/>
+</p>
+
+Select the code from `extension/` and wait for chrome to finalize the third party extension install.  You should see a new icon in your Chrome toolbar when the extension is successfully installed.
+
 The endpoint URL can be configured by clicking the extension icon in Chrome:
 
 <p align="center">
   <img src="static/endpoint.png" width="300px"/>
 </p>
+
+You can set this endpoint to any URL that accepts a POST request containing Zetamac score information.
 
 ## Lambda Function
 
@@ -37,7 +45,7 @@ In the `lambda/` folder there is a basic lambda function that contains logic to 
 
 The function saves the current score and timestamp to a DynamoDB table.
 
-In addition, the Lambda function accepts GET requests to return the score data in chronological order.  This can be extremely useful for time series visualizations:
+In addition, the Lambda function accepts GET requests to return the score data in chronological order.  This can be extremely useful for time series visualizations like this:
 
 <p align="center">
   <img src="static/example.png" width="700px"/>
