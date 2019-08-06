@@ -10,7 +10,7 @@ It's a really fun game, but the primary reason for using Zetamac is to prepare f
 
 This can become cumbersome over time, and the visualization tools built into Excel are not as advanced as external options like MatPlotLib.
 
-<p>
+<p align="center">
   <img src="static/excel.png" width="500px"/>
   <p align="center">Excel Example</p>
 </p>
@@ -28,6 +28,6 @@ This extension allows you to automatically POST your score data to any URL in th
 The endpoint URL can be configured by clicking the extension icon in Chrome:
 
 <p>
-  <img src="static/endpoint.png" width="200px"/>
+  <img src="static/endpoint.png" width="300px"/>
 </p>
 
