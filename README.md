@@ -27,7 +27,7 @@ This extension allows you to automatically POST your score data to any URL in th
 
 The endpoint URL can be configured by clicking the extension icon in Chrome:
 
-<p>
+<p align="center">
   <img src="static/endpoint.png" width="300px"/>
 </p>
 
