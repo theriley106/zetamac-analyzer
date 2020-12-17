@@ -1,13 +1,43 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
+
 <head>
   <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <style>
+    body {
+      width: 500px;
+    }
+
+    main {
+      margin: 1em;
+    }
+
+    #set {
+      width: 100%;
+      margin-top: 5px;
+    }
+  </style>
 </head>
+
 <body>
-  <div id="data"></div>
-  <input type="text" id="text"></input>
-  <button id="set">Set</button>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <main>
+    <div>Current Endpoint: <code id="data"></code></div>
+    <hr />
+    <form>
+      <div class="form-group">
+        <label for="text">API Endpoint</label>
+        <input type="text" class="form-control" id="text" placeholder="Enter API Endpoint">
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="set">Set</button>
+    </form>
+
+    <p id="info"></p>
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="popup.js"></script>
 </body>
+
 </html>
