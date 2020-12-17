@@ -1,38 +1,40 @@
-(function() {
+(function () {
 	window.save = 0;
-	setInterval(function(){
-		// console.log("THIS STARTED");
+	setInterval(function () {
 		secondsHTML = document.getElementsByClassName("left")[0].innerHTML;
 		var seconds = parseInt(secondsHTML.match(/\d+/g).map(Number));
 
-		scoreHTML = document.getElementsByClassName("left")[0].innerHTML;
+		scoreHTML = document.getElementsByClassName("correct")[0].innerHTML;
 		var score = parseInt(scoreHTML.match(/\d+/g).map(Number));
-		chrome.storage.sync.get("data", function(items) {
-			    if (!chrome.runtime.error) {
-			    	window.urlVal = items.data;
-			    	// console.log(items.data);
-			    }
-			  });
+
+		// debug
+		// console.log(`seconds: ${seconds}, score: ${score}`);
+
 		var save = (seconds === 0) && (window.save === 0);
 		if (save) {
-			var xhr = new XMLHttpRequest();
-			var url = window.urlVal;
-			xhr.open("POST", url, true);
-			xhr.setRequestHeader("Content-Type", "application/json");
-			xhr.onreadystatechange = function () {
-			    if (xhr.readyState === 4 && xhr.status === 200) {
-			        //var json = JSON.parse(xhr.responseText);
-			        console.log(xhr.responseText);
-			    }
-			};
-			var data = JSON.stringify({"score": 999});
-			xhr.send(data);
-			console.log("GAME COMPLETED");
-			console.log("Score: ", score);
-			console.log("Seconds: ", seconds);
-			console.log("SAVED RESULTS");
 			window.save = 1;
+			chrome.storage.sync.get("data", items => {
+				if (!chrome.runtime.error) {
+					window.urlVal = items.data;
+					console.log("GAME COMPLETED");
+					console.log("Score: ", score);
+					console.log("Seconds: ", seconds);
+					console.log(`Saving to: ${window.urlVal}`);
+					fetch(window.urlVal, {
+						method: "POST",
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ "score": score })
+					}).then(res => res.json())
+						.then(res => {
+							console.log(res)
+							console.log(`Saved results to ${window.urlVal}`);
+						}).catch(err => {
+							console.log(err);
+						})
+				}
+			});
 		}
-
 	}, 300);
 })();

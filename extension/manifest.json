@@ -1,20 +1,20 @@
 {
-  "name": "Injecta",
-  "version": "0.0.1",
+  "name": "Zetamac Analyzer",
+  "version": "0.0.2",
   "manifest_version": 2,
-  "description": "Injecting stuff",
-  "homepage_url": "http://danharper.me",
+  "description": "Sends Zetamac score to API endpoint",
+  "homepage_url": "https://github.com/theriley106/zetamac-analyzer.git",
   "content_scripts": [
-   {
-      //Set your address you want the extension will work in mataches!!!
-   "matches": ["https://arithmetic.zetamac.com/game*"],
-    "js": ["content.js"],
-    "run_at": "document_end"
-   }
+    {
+      "matches": [
+        "https://arithmetic.zetamac.com/game*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
   ],
-  "browser_action": {
-    "default_title": "Inject!"
-  },
   "browser_action": {
     "default_popup": "popup.html"
   },
