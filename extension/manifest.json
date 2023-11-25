@@ -1,28 +1,23 @@
 {
   "name": "Injecta",
   "version": "0.0.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "Injecting stuff",
   "homepage_url": "http://danharper.me",
   "content_scripts": [
-   {
-      //Set your address you want the extension will work in mataches!!!
-   "matches": ["https://arithmetic.zetamac.com/game*"],
-    "js": ["content.js"],
-    "run_at": "document_end"
-   }
+    {
+      "matches": ["https://arithmetic.zetamac.com/game*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
   ],
-  "browser_action": {
-    "default_title": "Inject!"
-  },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html"
   },
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
-  "permissions": [
-    "https://*/*",
-    "http://*/*",
-    "tabs",
-    "storage"
-  ]
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
+  },
+  "permissions": ["tabs", "storage"],
+  "host_permissions": ["<all_urls>"]
 }
