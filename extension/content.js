@@ -5,7 +5,7 @@
 		secondsHTML = document.getElementsByClassName("left")[0].innerHTML;
 		var seconds = parseInt(secondsHTML.match(/\d+/g).map(Number));
 
-		scoreHTML = document.getElementsByClassName("left")[0].innerHTML;
+		scoreHTML = document.getElementsByClassName("correct")[0].innerHTML;
 		var score = parseInt(scoreHTML.match(/\d+/g).map(Number));
 		chrome.storage.sync.get("data", function(items) {
 			    if (!chrome.runtime.error) {
@@ -25,7 +25,7 @@
 			        console.log(xhr.responseText);
 			    }
 			};
-			var data = JSON.stringify({"score": 999});
+			var data = JSON.stringify({"score": score});
 			xhr.send(data);
 			console.log("GAME COMPLETED");
 			console.log("Score: ", score);
