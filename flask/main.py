@@ -1,5 +1,6 @@
 from flask import Flask, request
 from os import getenv
+from datetime import datetime
 import csv
 
 app = Flask(__name__)
@@ -26,14 +27,13 @@ def after_request(response):
 
 @app.route("/store", methods=["POST", "OPTIONS"])
 def store_score():
-    print('here')
     if request.method == "OPTIONS":
         return ""
     data = request.get_json()
     score = data.get("score")
     with open("scores.csv", "a", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow([score])
+        writer.writerow([score, datetime.now()])
     print(score)
     return "Score stored successfully"
 
